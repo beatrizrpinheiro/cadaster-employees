@@ -53,7 +53,7 @@ namespace Bootcamp1st.Controllers
             return Ok(contacts);
         }
 
-        [HttpDelete("contacts")]
+        [HttpDelete("contacts/{id:int}")]
         public IActionResult DeleteProduct(int id)
         {
             var contacts = _contactService.DeleteContact(id);

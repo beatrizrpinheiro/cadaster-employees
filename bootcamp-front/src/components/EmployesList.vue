@@ -3,6 +3,9 @@
     <b-alert v-model="showAlertSuccess" variant="success" show
       >Record updated!</b-alert
     >
+    <b-alert v-model="showAlertDelete" variant="success" show
+      >Record deleted!</b-alert
+    >
     <h2>Lista de Funcionários</h2>
     <b-table :items="funcionarios" :fields="fields" striped hover responsive>
       <template #cell(nome)="item">
@@ -17,8 +20,13 @@
       <template #cell(phone)="item">
         <p>{{ item.PhoneNumber }}</p>
       </template>
-      <template #cell(excluir)>
-        <b-button size="sm" variant="danger">Excluir</b-button>
+      <template #cell(excluir)="item">
+        <b-button
+          size="sm"
+          variant="danger"
+          @click="excluirFuncionario(item.item)"
+          >Excluir</b-button
+        >
       </template>
       <template #cell(editar)="item">
         <b-button
@@ -29,6 +37,18 @@
         >
       </template>
     </b-table>
+
+    <b-modal
+      v-model="showModalDelete"
+      id="modal-lg"
+      size="lg"
+      title="Delete the employee's information"
+      ok-only
+      no-close-on-backdrop
+      @ok="deleteEmployee()"
+    >
+      Are you sure to delete this employee contact?
+    </b-modal>
 
     <b-modal
       v-model="showModal"
@@ -94,6 +114,8 @@ export default {
       isSubmitting: false,
       showModal: false,
       showAlertSuccess: false,
+      showModalDelete: false,
+      showAlertDelete: false,
 
       form: {
         id: null,
@@ -186,11 +208,35 @@ export default {
         });
     },
 
-    deleteFuncionario() {},
+    deleteEmployee() {
+      const id = this.form.id;
+
+      axios
+        .delete(`https://localhost:44364/Contact/contacts/${id}`)
+        .then((response) => {
+          console.log(response.data);
+
+          this.getFuncionarios();
+
+          this.showModalDelete = false;
+          this.showAlertDelete = true;
+          setTimeout(() => {
+            this.showAlertDelete = false;
+          }, 3000);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    },
 
     editarFuncionario(form) {
       this.form = { ...form };
       this.showModal = true;
+    },
+
+    excluirFuncionario(form) {
+      this.form = { ...form };
+      this.showModalDelete = true;
     },
   },
 };

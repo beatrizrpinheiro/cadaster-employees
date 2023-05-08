@@ -45,7 +45,7 @@ namespace Bootcamp1st.Controllers
             return Ok(contacts);
         }*/
 
-        [HttpPut("contacts")]
+        [HttpPut("contacts/{id:int}")]
 
         public IActionResult UpdateProduct(int id, Contact updateContact)
         {

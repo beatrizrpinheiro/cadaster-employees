@@ -1,5 +1,8 @@
 <template>
   <div>
+    <b-alert v-model="showAlertSuccess" variant="success" show
+      >Record updated!</b-alert
+    >
     <h2>Lista de Funcionários</h2>
     <b-table :items="funcionarios" :fields="fields" striped hover responsive>
       <template #cell(nome)="item">
@@ -17,35 +20,60 @@
       <template #cell(excluir)>
         <b-button size="sm" variant="danger">Excluir</b-button>
       </template>
-      <template #cell(editar)>
-        <b-button size="sm" variant="primary" @click="editarFuncionario(form)"
+      <template #cell(editar)="item">
+        <b-button
+          size="sm"
+          variant="primary"
+          @click="editarFuncionario(item.item)"
           >Editar</b-button
         >
       </template>
     </b-table>
 
-    <b-modal v-model="showModal" title="Edit the employee's information">
+    <b-modal
+      v-model="showModal"
+      title="Edit the employee's information"
+      hide-footer
+    >
       <b-form>
         <b-form-group id="input-group-1" label="Nome:" label-for="input-1">
-          <b-form-input id="input-1" v-model="form.name"></b-form-input>
+          <b-form-input
+            id="input-1"
+            v-model="form.name"
+            class="mb-2"
+          ></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-2" label="Email:" label-for="input-2">
-          <b-form-input id="input-2" v-model="form.email"></b-form-input>
+          <b-form-input
+            id="input-2"
+            v-model="form.email"
+            class="mb-2"
+          ></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-3" label="Cargo:" label-for="input-3">
-          <b-form-input id="input-3" v-model="form.position"></b-form-input>
+          <b-form-input
+            id="input-3"
+            v-model="form.position"
+            class="mb-2"
+          ></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-4" label="Telefone:" label-for="input-4">
-          <b-form-input id="input-4" v-model="form.phone"></b-form-input>
+          <b-form-input
+            id="input-4"
+            v-model="form.phone"
+            class="mb-2"
+          ></b-form-input>
         </b-form-group>
 
-        <b-button type="submit" variant="primary" @click="updateEmployee()"
+        <b-button variant="primary" @click="updateEmployee()" class="mt-3 mr-4"
           >Save</b-button
         >
-        <b-button variant="secondary">Cancel</b-button>
+        <b-button variant="secondary" class="mt-3" style="margin-left: 0.5rem"
+          >Cancel</b-button
+        >
       </b-form>
     </b-modal>
   </div>
@@ -65,6 +93,7 @@ export default {
     return {
       isSubmitting: false,
       showModal: false,
+      showAlertSuccess: false,
 
       form: {
         id: null,
@@ -141,7 +170,13 @@ export default {
             ...updateContact,
           };
 
+          this.getFuncionarios();
+
           this.showModal = false;
+          this.showAlertSuccess = true;
+          setTimeout(() => {
+            this.showAlertSuccess = false;
+          }, 3000);
         })
         .catch((error) => {
           console.log(error.response.data);
@@ -150,6 +185,8 @@ export default {
           this.isSubmitting = false;
         });
     },
+
+    deleteFuncionario() {},
 
     editarFuncionario(form) {
       this.form = { ...form };

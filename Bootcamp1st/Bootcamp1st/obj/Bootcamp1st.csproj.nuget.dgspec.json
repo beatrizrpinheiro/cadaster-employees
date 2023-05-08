@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Beatriz Pinheiro\\Desktop\\BootCamp1\\Bootcamp1st\\Bootcamp1st\\Bootcamp1st.csproj": {}
+    "C:\\Users\\Beatriz Pinheiro\\Desktop\\cadaster-employees\\Bootcamp1st\\Bootcamp1st\\Bootcamp1st.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Beatriz Pinheiro\\Desktop\\BootCamp1\\Bootcamp1st\\Bootcamp1st\\Bootcamp1st.csproj": {
+    "C:\\Users\\Beatriz Pinheiro\\Desktop\\cadaster-employees\\Bootcamp1st\\Bootcamp1st\\Bootcamp1st.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Beatriz Pinheiro\\Desktop\\BootCamp1\\Bootcamp1st\\Bootcamp1st\\Bootcamp1st.csproj",
+        "projectUniqueName": "C:\\Users\\Beatriz Pinheiro\\Desktop\\cadaster-employees\\Bootcamp1st\\Bootcamp1st\\Bootcamp1st.csproj",
         "projectName": "Bootcamp1st",
-        "projectPath": "C:\\Users\\Beatriz Pinheiro\\Desktop\\BootCamp1\\Bootcamp1st\\Bootcamp1st\\Bootcamp1st.csproj",
+        "projectPath": "C:\\Users\\Beatriz Pinheiro\\Desktop\\cadaster-employees\\Bootcamp1st\\Bootcamp1st\\Bootcamp1st.csproj",
         "packagesPath": "C:\\Users\\Beatriz Pinheiro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Beatriz Pinheiro\\Desktop\\BootCamp1\\Bootcamp1st\\Bootcamp1st\\obj\\",
+        "outputPath": "C:\\Users\\Beatriz Pinheiro\\Desktop\\cadaster-employees\\Bootcamp1st\\Bootcamp1st\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

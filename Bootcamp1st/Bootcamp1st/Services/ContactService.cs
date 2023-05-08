@@ -67,7 +67,6 @@ namespace Bootcamp1st.Services
             if (contactToUpdate == null)
                 return null;
 
-            contactToUpdate.Id = updateContact.Id;
             contactToUpdate.Name = updateContact.Name;
             contactToUpdate.Position = updateContact.Position;
             contactToUpdate.Email = updateContact.Email;
@@ -77,6 +76,9 @@ namespace Bootcamp1st.Services
             contactToUpdate.PhoneNumber = updateContact.PhoneNumber;
             contactToUpdate.BirthdayDate = updateContact.BirthdayDate;
             contactToUpdate.Company = updateContact.Company;
+
+            _context.Contacts.Update(contactToUpdate);
+            _context.SaveChanges();
 
             return contactToUpdate;
         }
